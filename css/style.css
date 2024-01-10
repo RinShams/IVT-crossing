@@ -1,3 +1,7 @@
+:root {
+    --screen-width: 1200px;
+}
+
 *{
   margin: 0px;
   padding: 0px;
@@ -8,9 +12,10 @@ body {
     background-color: #cdf;    
 }
 
-#startscreen{
-    width: 1200px;
-    height: 800px;
+#splashScreen{
+    width: var(--screen-width);
+    aspect-ratio: 3/2;
+    
     position: relative;
     margin: auto;  
     background-color: #a461fa;    
@@ -25,6 +30,7 @@ body {
     width: 300px;
     height: 45px;
     position: absolute;
+    font-size: 110%;
     text-align: center;
     bottom: 30%;
     left: 40%
@@ -36,16 +42,27 @@ body {
     position: absolute;
     bottom: 15%;
     left: 45%;
+
+    font-size: 110%;
 }
 
 
-.game {
+#game {
     width: 1200px;
     height: 800px;
     position: relative; 
     margin: auto;    
     background-color: #61fad6;    
     border: 1px solid black;
+
+    background-image: url("../img/backGround.jpeg");
+    background-repeat: no-repeat;    
+    background-size: 100% 100%;  
+
+}
+
+.screenHover {
+    opacity: 0.05;
 }
 
 #go {
@@ -54,15 +71,67 @@ body {
     position: absolute;
     bottom: 10%;
     left: 45%;
+    font-size: 100%;
 }
 
+#rulesButton {
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    bottom: 5%;
+    left: 92%;
+
+    font-size: 110%;
+    background-color: aqua;
+}
+
+#rulesScreen {
+    width: 75%;
+    height: 75%;
+
+    position: absolute;
+    left: 50%;
+    top: 50%;
+
+    transform: translate3d(-50%, -50%, 0);
+
+
+    background-image: url("../img/rules.jpg");
+    background-repeat: no-repeat;    
+    background-size: 100% 100%; 
+    z-index: 10;
+}
+
+#movesValue {
+    position: absolute;
+    left: 2%;
+    bottom: 95%;
+    width: max-content;
+    height: max-content;
+    background-color: rgba(255, 255, 255, 0.3);
+    
+    font-size: 150%;
+    text-align: center;
+}
+
+#timerValue{
+    position: absolute;
+    left: 86%;
+    bottom: 95%;
+    width: max-content;
+    height: max-content;
+    background-color: rgba(255, 255, 255, 0.3);
+   
+    font-size: 150%;
+    text-align: center;
+}
 
 .boat {
     background-color: #8c7758;
 
     width: 180px;
     height: 50px; 
-    bottom: 30%;
+    bottom: 25%;
     left: 32%;
 
     position: absolute;
@@ -186,7 +255,7 @@ body {
 }
 
 
-.finalScreen {
+#finalScreen {
     width: 1200px;
     height: 800px;
     position: relative; 
@@ -199,5 +268,68 @@ body {
 }
 
 .loss {
-    background-color: hsl(0, 100%, 76%);    
+    background-color: hsl(0, 100%, 76%);  
+
+    background-image: url("../img/end.jpeg");
+    background-repeat: no-repeat;    
+    background-size: 100% 100%;    
+}
+
+.scoreBoard {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    padding: 4px;
+    position: absolute;
+    left: 0%;
+    top: 20%;
+    height:55%;
+
+    width: 50%;
+
+    z-index: 2;
+
+    
+
+    overflow-y: auto;
+
+    >span {
+        width: 75%;
+        text-align: center;
+        padding: 3px;
+        font-size: 20px;
+        background-color: rgba(255, 255, 255, 0.3);
+    }
+}
+
+.lastscore {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    padding: 4px;
+    position: absolute;
+    left: 50%;
+    top: 20%;
+    height:55%;
+
+    width: 50%;
+
+    z-index: 2;
+
+    
+
+    overflow-y: auto;
+
+    >span {
+        width: 75%;
+        text-align: center;
+        padding: 3px;
+        font-size: 23px;
+        font-weight: 540;
+        background-color: rgba(255, 255, 255, 0.3);
+    }
+
+
 }

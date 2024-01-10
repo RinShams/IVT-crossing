@@ -1,6 +1,7 @@
 class AppComponent extends Component {
     constructor(options) {
         super(options);
+        
         this.splashScreen = new SplashScreenComponent({
             id: 'splashScreen',
             parent: this.id,
