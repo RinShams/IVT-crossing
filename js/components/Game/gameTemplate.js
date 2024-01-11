@@ -20,6 +20,6 @@ Template.prototype.gameTemplate = () =>`
 
         <button id="go">в плавание</button>   
     </div> 
-    <audio class="audio" src="../../../music/Jingle%20Bell%20Rock.mp3" controls loop></audio>
+    <audio class="audio" src="./music/Jingle%20Bell%20Rock.mp3" controls loop></audio>
 `;
 
