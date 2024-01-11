@@ -9,24 +9,24 @@
 }
 
 body {
-    background-color: #cdf;    
+    background-color: #cdf;
 }
 
 #splashScreen{
     width: var(--screen-width);
     aspect-ratio: 3/2;
-    
+
     position: relative;
-    margin: auto;  
-    background-color: #a461fa;    
+    margin: auto;
+    background-color: #a461fa;
     border: 1px solid black;
-}  
+}
 
 .hide {
     display: none;
 }
 
-#name {    
+#name {
     width: 300px;
     height: 45px;
     position: absolute;
@@ -50,15 +50,21 @@ body {
 #game {
     width: 1200px;
     height: 800px;
-    position: relative; 
-    margin: auto;    
-    background-color: #61fad6;    
+    position: relative;
+    margin: auto;
+    background-color: #61fad6;
     border: 1px solid black;
 
     background-image: url("../img/backGround.jpeg");
-    background-repeat: no-repeat;    
-    background-size: 100% 100%;  
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
 
+}
+
+.audio {
+    position: absolute;
+    bottom: -64px;
+    width: 400px;
 }
 
 .screenHover {
@@ -97,8 +103,8 @@ body {
 
 
     background-image: url("../img/rules.jpg");
-    background-repeat: no-repeat;    
-    background-size: 100% 100%; 
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
     z-index: 10;
 }
 
@@ -109,7 +115,7 @@ body {
     width: max-content;
     height: max-content;
     background-color: rgba(255, 255, 255, 0.3);
-    
+
     font-size: 150%;
     text-align: center;
 }
@@ -121,7 +127,7 @@ body {
     width: max-content;
     height: max-content;
     background-color: rgba(255, 255, 255, 0.3);
-   
+
     font-size: 150%;
     text-align: center;
 }
@@ -130,12 +136,12 @@ body {
     background-color: #8c7758;
 
     width: 180px;
-    height: 50px; 
+    height: 50px;
     bottom: 25%;
     left: 32%;
 
     position: absolute;
-    display:flex;    
+    display:flex;
     justify-content: center;
     align-items: end;
 
@@ -162,7 +168,7 @@ body {
     position: relative;
     bottom: 0%;
     left: 0%;
-    z-index:1; 
+    z-index:1;
 }
 
 [data-age="adult"] {
@@ -177,7 +183,7 @@ body {
     border: 1px solid black;
 }
 
-#tr {       
+#tr {
     background-color: pink;
 
     --bottom: 40%;
@@ -195,28 +201,28 @@ body {
     background-color: #7de36d;
 
     --bottom: 50%;
-    --left: 17%;    
+    --left: 17%;
 }
 
 #als {
     background-color:pink;
-    
+
     --bottom: 27%;
-    --left: 6%; 
+    --left: 6%;
 }
 
 #ar {
     background-color: #d3ccff;
-    
+
     --bottom: 32%;
-    --left: 13%; 
+    --left: 13%;
 }
 
-#liz { 
-    background-color: #7de36d;    
-    
+#liz {
+    background-color: #7de36d;
+
     --bottom: 37%;
-    --left: 20%;      
+    --left: 20%;
 }
 
 .jump {
@@ -224,26 +230,26 @@ body {
 }
 
 @keyframes jump {
-    0%, 
+    0%,
     100% {
         transform: translateY(-20px);
-    }    
+    }
     50% {
         transform: translateY(-35px);
-    }     
+    }
 }
 
 .move {
     animation: move 1s ease-in-out;
-    animation-fill-mode: both; 
+    animation-fill-mode: both;
 }
 
-@keyframes moveRight { 
+@keyframes moveRight {
     100% {
         bottom: var(--bottom);
         left: calc(95% - var(--left));
-    }    
-        
+    }
+
 }
 
 #restart {
@@ -258,21 +264,21 @@ body {
 #finalScreen {
     width: 1200px;
     height: 800px;
-    position: relative; 
-    margin: auto;       
+    position: relative;
+    margin: auto;
     border: 1px solid black;
 }
 
 .win {
-    background-color: hsl(62, 98%, 75%); 
+    background-color: hsl(62, 98%, 75%);
 }
 
 .loss {
-    background-color: hsl(0, 100%, 76%);  
+    background-color: hsl(0, 100%, 76%);
 
     background-image: url("../img/end.jpeg");
-    background-repeat: no-repeat;    
-    background-size: 100% 100%;    
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
 }
 
 .scoreBoard {
@@ -290,7 +296,7 @@ body {
 
     z-index: 2;
 
-    
+
 
     overflow-y: auto;
 
@@ -318,7 +324,7 @@ body {
 
     z-index: 2;
 
-    
+
 
     overflow-y: auto;
 
