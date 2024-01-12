@@ -1,6 +1,3 @@
-:root {
-    --screen-width: 1200px;
-}
 
 *{
   margin: 0px;
@@ -13,17 +10,32 @@ body {
 }
 
 #splashScreen{
-    width: var(--screen-width);
-    aspect-ratio: 3/2;
-    
-    position: relative;
-    margin: auto;  
-    background-color: #a461fa;    
+    width: 1200px;
+    height: 800px;
+    position: relative; 
+    margin: auto;
+
+    background-color: #b9a0ff;    
     border: 1px solid black;
+
+    background-image: url("../img/menu.jpg");
+    background-repeat: no-repeat;    
+    background-size: 100% 100%; 
 }  
 
 .hide {
     display: none;
+}
+
+.volume {
+    width: 55px;
+    height: 55px;
+    position: absolute;
+    bottom: 5%;
+    left: 3.5%;
+
+    font-size: 130%;
+    background-color: rgb(169, 236, 255);    
 }
 
 #name {    
@@ -75,14 +87,14 @@ body {
 }
 
 #rulesButton {
-    width: 50px;
-    height: 50px;
+    width: 55px;
+    height: 55px;
     position: absolute;
     bottom: 5%;
     left: 92%;
 
     font-size: 110%;
-    background-color: aqua;
+    background-color: rgb(169, 236, 255);
 }
 
 #rulesScreen {
@@ -96,7 +108,7 @@ body {
     transform: translate3d(-50%, -50%, 0);
 
 
-    background-image: url("../img/rules.jpg");
+    background-image: url("../img/ruless.jpg");
     background-repeat: no-repeat;    
     background-size: 100% 100%; 
     z-index: 10;
@@ -175,45 +187,46 @@ body {
     width: 70px;
     height: 90px;
     border: 1px solid black;
+    z-index: 3;
 }
 
 #tr {       
-    background-color: pink;
+    background-color: rgb(255, 220, 239);
 
     --bottom: 40%;
     --left: 3%;
 }
 
 #nov {
-    background-color: #d3ccff;
+    background-color: #dddcff;
 
     --bottom:45%;
     --left: 10%;
 }
 
 #gol {
-    background-color: #7de36d;
+    background-color: #b4ffa8;
 
     --bottom: 50%;
     --left: 17%;    
 }
 
 #als {
-    background-color:pink;
+    background-color:rgb(255, 220, 239);
     
     --bottom: 27%;
     --left: 6%; 
 }
 
 #ar {
-    background-color: #d3ccff;
+    background-color: #dddcff;
     
     --bottom: 32%;
     --left: 13%; 
 }
 
 #liz { 
-    background-color: #7de36d;    
+    background-color: #b4ffa8;    
     
     --bottom: 37%;
     --left: 20%;      
@@ -264,7 +277,7 @@ body {
 }
 
 .win {
-    background-color: hsl(62, 98%, 75%); 
+    background-color: hsl(62, 100%, 88%); 
 }
 
 .loss {

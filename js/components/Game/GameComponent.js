@@ -18,8 +18,29 @@ class GameComponent extends Component {
         this.isRunning = false;
         this.interval;
 
+        this.splash = document.querySelector("#splash");
+
         this.game();  
     }
+
+    _addEventListeners() {
+        
+        document.querySelector("#gameThemeButton").addEventListener('click', () => { 
+            let gameTheme = document.querySelector("#gameTheme");           
+
+            let flag = localStorage.getItem("volume");
+
+            if (flag == "on") {
+                localStorage.setItem("volume", "off");
+                gameTheme.volume = 0;
+                document.querySelectorAll(".volume").forEach((el) => el.innerHTML = '🔈');
+            } else {
+                localStorage.setItem("volume", "on");
+                gameTheme.volume = 1;
+                document.querySelectorAll(".volume").forEach((el) => el.innerHTML = '🔊');
+            }
+        });
+    }    
 
     game() {
         
@@ -147,6 +168,7 @@ class GameComponent extends Component {
             this.persInBoat +=1;
             pers.dataset.position = 'inBoat'  
             this.boat.appendChild(pers); 
+            this.splash.play();
        } else {
         this.jump(pers);
        }
@@ -159,7 +181,6 @@ class GameComponent extends Component {
         setTimeout(() => {
             pers.classList.remove('jump');
         }, 400);
-        console.log(pers.dataset.age);
     }
 
     boatMove() {
@@ -196,6 +217,8 @@ class GameComponent extends Component {
         } else if (result == 'loss') {
             document.querySelector('#finalScreen').classList.add('loss');
         }
+        let gameTheme = document.querySelector("#gameTheme"); 
+        gameTheme.pause();
         document.querySelector('#finalScreen').classList.add('end');
         this.hide(this.id);
         this.show('finalScreen');

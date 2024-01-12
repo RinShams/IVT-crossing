@@ -15,14 +15,3 @@ new AppComponent({
     template: template.appTemplate
 });   
 
-//width: 140vh;
-//height: 95vh;
-/* margin-left: auto;
-    margin-right: auto
-
-background-image: url("../img/frame.png");
-    background-repeat: no-repeat;    
-    background-size: 100% 100%;  
-
-
-	*/
