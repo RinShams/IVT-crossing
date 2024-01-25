@@ -16,13 +16,13 @@ class FinalScreenComponent extends Component {
     showResults() {
         const triesTop = {};
 
-        let tryNumber = localStorage.getItem('try')-0; 
+        let tryNumber = localStorage.getItem('try') - 0;
 
-        for(let i = 0; i <= tryNumber; i++) {
+        for (let i = 0; i <= tryNumber; i++) {
             const tries = localStorage.getItem(`try-${i}`);
-            if(tries) {
+            if (tries) {
                 const [name, time, moves] = tries.split(' ');
-                if(triesTop[moves]) {
+                if (triesTop[moves]) {
                     triesTop[moves].push([time, name]);
                 } else {
                     triesTop[moves] = [[time, name]];
@@ -35,31 +35,31 @@ class FinalScreenComponent extends Component {
 
         let innerIndex = 1;
 
-        Object.entries(triesTop).forEach(([key, value]) => {             
-                value.forEach(result => {
-                    if (innerIndex < 11) {
-                        let span = document.createElement('span');                
-                        document.querySelector(".scoreBoard").appendChild(span);
-                        span.textContent = `${innerIndex}. ${result[1]}: ⭐️ ходы - ${key} ⭐️ время - ${result[0]}`;
-                        innerIndex+=1;
-                    }    
-                });
-            
+        Object.entries(triesTop).forEach(([key, value]) => {
+            value.forEach(result => {
+                if (innerIndex < 11) {
+                    let span = document.createElement('span');
+                    document.querySelector(".scoreBoard").appendChild(span);
+                    span.textContent = `${innerIndex}. ${result[1]}: ⭐️ ходы - ${key} ⭐️ время - ${result[0]}`;
+                    innerIndex += 1;
+                }
+            });
+
         });
         if (document.querySelector('#finalScreen').classList.contains('win')) {
             this.endTheme = document.querySelector("#winTheme");
 
             const [name, time, moves] = localStorage.getItem(`lastTry`).split(' ');
             let span = document.createElement('span');
-                document.querySelector(".lastscore").appendChild(span);
-                span.textContent = `💎 Ваш результат, ${name}: ходы - ${moves} 💎 время - ${time}`;
-                
+            document.querySelector(".lastscore").appendChild(span);
+            span.textContent = `💎 Ваш результат, ${name}: ходы - ${moves} 💎 время - ${time}`;
+
         } else {
             this.endTheme = document.querySelector("#lossTheme");
 
             let span = document.createElement('span');
-                document.querySelector(".lastscore").appendChild(span);
-                span.textContent = `🌧 О нет, кто-то из детей расплакался... Проигрыш! 🌧`;
+            document.querySelector(".lastscore").appendChild(span);
+            span.textContent = `🌧 О нет, кто-то из студентов испугалсяё... Проигрыш! 🌧`;
         }
 
         let flag = localStorage.getItem("volume");
@@ -76,8 +76,8 @@ class FinalScreenComponent extends Component {
             this.endTheme.pause();
             location.reload();
         });
-        
-        document.querySelector("#endThemeButton").addEventListener('click', () => { 
+
+        document.querySelector("#endThemeButton").addEventListener('click', () => {
             let flag = localStorage.getItem("volume");
             if (!flag) {
                 localStorage.setItem("volume", "on");
@@ -92,7 +92,7 @@ class FinalScreenComponent extends Component {
                 this.endTheme.volume = 1;
                 document.querySelectorAll(".volume").forEach((el) => el.innerHTML = '🔊');
             }
-        }); 
-    } 
+        });
+    }
 
 }

@@ -1,14 +1,15 @@
 class GameComponent extends Component {
-    constructor (options) {        
-        super(options); 
+    constructor(options) {
+        super(options);
 
         this.gameScreen = document.getElementById('gameScreen');
         this.rulesScreen = document.getElementById('rulesScreen');
-        
-        this.personages = document.querySelectorAll('[data-age]');  
-        this.boat = document.querySelector('.boat');        
-        
-        this.persInBoat = 0; 
+
+        this.personages = document.querySelectorAll('[data-age]');
+        this.boat = document.querySelector('.boat');
+        this.boatGroup = document.querySelector('.group');
+
+        this.persInBoat = 0;
         this.persOnRightSide = 0;
 
         this.moves = 0;
@@ -20,13 +21,13 @@ class GameComponent extends Component {
 
         this.splash = document.querySelector("#splash");
 
-        this.game();  
+        this.game();
     }
 
     _addEventListeners() {
-        
-        document.querySelector("#gameThemeButton").addEventListener('click', () => { 
-            let gameTheme = document.querySelector("#gameTheme");           
+
+        document.querySelector("#gameThemeButton").addEventListener('click', () => {
+            let gameTheme = document.querySelector("#gameTheme");
 
             let flag = localStorage.getItem("volume");
 
@@ -40,34 +41,34 @@ class GameComponent extends Component {
                 document.querySelectorAll(".volume").forEach((el) => el.innerHTML = '🔊');
             }
         });
-    }    
+    }
 
     game() {
-        
+
         document.getElementById('rulesButton').addEventListener('click', () => {
-                this.showRules();
-            });
+            this.showRules();
+        });
 
-        this.rulesScreen.addEventListener('click', () => {           
-                this.closeRules();                               
-            });
+        this.rulesScreen.addEventListener('click', () => {
+            this.closeRules();
+        });
 
-        document.getElementById('go').addEventListener('click', () => this.check());  
+        document.getElementById('go').addEventListener('click', () => this.check());
 
         this.personages.forEach(pers => {
-                pers.addEventListener('click', () => this.movePers(pers));            
-            });        
+            pers.addEventListener('click', () => this.movePers(pers));
+        });
     }
 
     showRules() {
-        if ((this.rulesScreen.classList.contains("hide")) && (!this.gameScreen.classList.contains('screenHover'))) {            
+        if ((this.rulesScreen.classList.contains("hide")) && (!this.gameScreen.classList.contains('screenHover'))) {
             this.rulesScreen.classList.remove("hide");
             this.gameScreen.classList.add('screenHover');
             this.pauseTimer();
         }
     }
 
-    closeRules () {
+    closeRules() {
         if ((!this.rulesScreen.classList.contains("hide")) && (this.gameScreen.classList.contains('screenHover'))) {
             this.rulesScreen.classList.add("hide");
             this.gameScreen.classList.remove('screenHover');
@@ -77,17 +78,17 @@ class GameComponent extends Component {
 
     startTimer() {
         if (!this.isRunning) {
-          this.isRunning = true;
-          this.interval = setInterval(() => this.updateTimer(), 1000); 
-        } 
+            this.isRunning = true;
+            this.interval = setInterval(() => this.updateTimer(), 1000);
+        }
     }
 
     updateTimer() {
-        this.seconds +=1;
-        
+        this.seconds += 1;
+
         if (this.seconds == 60) {
-          this.seconds = 0;
-          this.minutes +=1;
+            this.seconds = 0;
+            this.minutes += 1;
         }
         if (this.seconds < 10) {
             document.querySelector('#timerValue').textContent = `🌿 время: ${this.minutes}.0${this.seconds} `;
@@ -98,8 +99,8 @@ class GameComponent extends Component {
 
     pauseTimer() {
         if (this.isRunning) {
-          this.isRunning = false;
-          clearInterval(this.interval);
+            this.isRunning = false;
+            clearInterval(this.interval);
         }
     }
 
@@ -108,14 +109,14 @@ class GameComponent extends Component {
             let children = document.querySelectorAll('[data-age="child"]');
             let adults = document.querySelectorAll('[data-age="adult"]');
             let check = true;
-            
+
             children.forEach(child => {
                 let isAdult = false;
                 let myAdult = false;
 
-                adults.forEach(adult => {  
-                    
-                    if (child.dataset.position == adult.dataset.position) {                    
+                adults.forEach(adult => {
+
+                    if (child.dataset.position == adult.dataset.position) {
                         isAdult = true;
                         if (child.dataset.type == adult.dataset.type) {
                             myAdult = true;
@@ -131,49 +132,49 @@ class GameComponent extends Component {
                 this.moves += 1;
                 document.querySelector('#movesValue').textContent = `☘️ ходы: ${this.moves} `;
             } else {
-                this.finishGame('loss'); 
-            } 
-         }       
+                this.finishGame('loss');
+            }
+        }
     }
 
     movePers(pers) {
-        if (pers.dataset.position == 'inBoat') {            
+        if (pers.dataset.position == 'inBoat') {
             this.moveOnBeach(pers);
         } else if (this.persInBoat < 2) {
             this.moveIntoBoat(pers);
         } else {
             this.jump(pers);
-        }    
-    }
-
-    moveOnBeach(pers) {                         
-        document.querySelector("#game").appendChild(pers);
-        this.persInBoat -=1;
-        if (this.boat.classList.contains('boatRight')) {            
-            pers.dataset.position = 'rightSide';            
-            this.persOnRightSide +=1;
-            if (this.persOnRightSide == 6) { this.finishGame('win'); }
-        } else {
-            pers.dataset.position ='leftSide';            
         }
     }
 
-    moveIntoBoat(pers) {  
-        if ( (this.boat.classList.contains('boatRight') && (pers.dataset.position == 'rightSide')) || 
-            ((!this.boat.classList.contains('boatRight')) && (pers.dataset.position == 'leftSide'))) {
-             
-            if (this.boat.classList.contains('boatRight')) {
-                    this.persOnRightSide -=1;
-                }  
-            this.persInBoat +=1;
-            pers.dataset.position = 'inBoat'  
-            this.boat.appendChild(pers); 
-            this.splash.play();
-       } else {
-        this.jump(pers);
-       }
+    moveOnBeach(pers) {
+        document.querySelector("#game").appendChild(pers);
+        this.persInBoat -= 1;
+        if (this.boat.classList.contains('boatRight')) {
+            pers.dataset.position = 'rightSide';
+            this.persOnRightSide += 1;
+            if (this.persOnRightSide == 6) { this.finishGame('win'); }
+        } else {
+            pers.dataset.position = 'leftSide';
+        }
     }
-    
+
+    moveIntoBoat(pers) {
+        if ((this.boat.classList.contains('boatRight') && (pers.dataset.position == 'rightSide')) ||
+            ((!this.boat.classList.contains('boatRight')) && (pers.dataset.position == 'leftSide'))) {
+
+            if (this.boat.classList.contains('boatRight')) {
+                this.persOnRightSide -= 1;
+            }
+            this.persInBoat += 1;
+            pers.dataset.position = 'inBoat'
+            this.boatGroup.appendChild(pers);
+            this.splash.play();
+        } else {
+            this.jump(pers);
+        }
+    }
+
     jump(pers) {
         if (!pers.classList.contains('jump')) {
             pers.classList.add('jump');
@@ -190,11 +191,11 @@ class GameComponent extends Component {
             this.boat.classList.add('boatRight');
         }
     }
-    
-    finishGame(result) {
-        this.pauseTimer();                 
 
-        if (result == 'win') { 
+    finishGame(result) {
+        this.pauseTimer();
+
+        if (result == 'win') {
             document.querySelector('#finalScreen').classList.add('win');
 
             if (this.seconds < 10) {
@@ -203,21 +204,21 @@ class GameComponent extends Component {
                 this.time = `${this.minutes}.${this.seconds}`;
             }
             let name = localStorage.getItem(`lastTry`);
-            localStorage.setItem(`lastTry`, `${name} ${this.time} ${this.moves}`);  
+            localStorage.setItem(`lastTry`, `${name} ${this.time} ${this.moves}`);
 
-            let tryNumber = localStorage.getItem('try')-0;
+            let tryNumber = localStorage.getItem('try') - 0;
             if (!tryNumber) {
                 localStorage.setItem('try', 1);
             } else {
-                tryNumber +=1;
+                tryNumber += 1;
                 localStorage.setItem(`try`, `${tryNumber}`);
             }
-            localStorage.setItem(`try-${tryNumber}`, `${name} ${this.time} ${this.moves}`);           
+            localStorage.setItem(`try-${tryNumber}`, `${name} ${this.time} ${this.moves}`);
 
         } else if (result == 'loss') {
             document.querySelector('#finalScreen').classList.add('loss');
         }
-        let gameTheme = document.querySelector("#gameTheme"); 
+        let gameTheme = document.querySelector("#gameTheme");
         gameTheme.pause();
         document.querySelector('#finalScreen').classList.add('end');
         this.hide(this.id);

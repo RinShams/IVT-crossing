@@ -1,27 +1,26 @@
-
-*{
-  margin: 0px;
-  padding: 0px;
-  box-sizing: border-box;
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
 }
 
 body {
-    background-color: #cdf;    
+    background-color: #cdf;
 }
 
-#splashScreen{
+#splashScreen {
     width: 1200px;
     height: 800px;
-    position: relative; 
+    position: relative;
     margin: auto;
 
-    background-color: #b9a0ff;    
+    background-color: #b9a0ff;
     border: 1px solid black;
 
     background-image: url("../img/menu.jpg");
-    background-repeat: no-repeat;    
-    background-size: 100% 100%; 
-}  
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
 
 .hide {
     display: none;
@@ -35,17 +34,29 @@ body {
     left: 3.5%;
 
     font-size: 130%;
-    background-color: rgb(169, 236, 255);    
+    background-color: rgb(169, 236, 255);
+    transition: 0.4s border-color;
+    background-color: white;
+    border-style: double;
+    border-radius: 9px;
+    transition: 0.4s border-color;
 }
 
-#name {    
+.volume:hover {
+    border-color: rgb(94, 232, 94);
+}
+
+#name {
     width: 300px;
     height: 45px;
     position: absolute;
     font-size: 110%;
     text-align: center;
     bottom: 30%;
-    left: 40%
+    left: 40%;
+    background-color: white;
+    border-style: double;
+    border-radius: 9px;
 }
 
 #play {
@@ -54,22 +65,30 @@ body {
     position: absolute;
     bottom: 15%;
     left: 45%;
-
+    background-color: white;
+    border-style: double;
+    border-radius: 9px;
     font-size: 110%;
+    transition: 0.4s;
+}
+
+#play:hover {
+    border-color: rgb(94, 232, 94);
+    color: rgb(14, 137, 189)
 }
 
 
 #game {
     width: 1200px;
     height: 800px;
-    position: relative; 
-    margin: auto;    
-    background-color: #61fad6;    
+    position: relative;
+    margin: auto;
+    background-color: #61fad6;
     border: 1px solid black;
 
     background-image: url("../img/backGround.jpeg");
-    background-repeat: no-repeat;    
-    background-size: 100% 100%;  
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
 
 }
 
@@ -84,6 +103,16 @@ body {
     bottom: 10%;
     left: 45%;
     font-size: 100%;
+    background-color: white;
+    border-style: double;
+    border-radius: 9px;
+    font-size: 110%;
+    transition: 0.4s;
+}
+
+#go:hover {
+    border-color: rgb(94, 232, 94);
+    color: rgb(14, 137, 189)
 }
 
 #rulesButton {
@@ -94,7 +123,16 @@ body {
     left: 92%;
 
     font-size: 110%;
-    background-color: rgb(169, 236, 255);
+    background-color: white;
+    border-style: double;
+    border-radius: 9px;
+    font-size: 110%;
+    transition: 0.4s;
+}
+
+#rulesButton:hover {
+    border-color: rgb(94, 232, 94);
+    color: rgb(14, 137, 189)
 }
 
 #rulesScreen {
@@ -109,45 +147,78 @@ body {
 
 
     background-image: url("../img/ruless.jpg");
-    background-repeat: no-repeat;    
-    background-size: 100% 100%; 
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
     z-index: 10;
 }
 
 #movesValue {
     position: absolute;
     left: 2%;
-    bottom: 95%;
+    bottom: 92%;
     width: max-content;
     height: max-content;
     background-color: rgba(255, 255, 255, 0.3);
-    
+
     font-size: 150%;
     text-align: center;
+
+    background-color: white;
+    border-radius: 6px;
+    width: 156px;
+    height: 40px;
+    text-align: center;
+    border-style: double;
+    border-width: 1px;
 }
 
-#timerValue{
+#timerValue {
     position: absolute;
-    left: 86%;
-    bottom: 95%;
+    left: 84%;
+    bottom: 93%;
+    min-width: 177px;
     width: max-content;
-    height: max-content;
+    height: 40px;
     background-color: rgba(255, 255, 255, 0.3);
-   
     font-size: 150%;
     text-align: center;
+    background-color: white;
+    color: black;
+    border-radius: 6px;
+    border-color: #3f3f3f;
+    border-style: double;
+    border-width: 1px;
+}
+
+.group {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+}
+
+.boatIMG {
+    position: absolute;
+    top: -60px;
+    left: -25px;
+}
+
+.boatIMG2 {
+    position: absolute;
+    top: -60px;
+    left: -25px;
+    z-index: 2;
 }
 
 .boat {
-    background-color: #8c7758;
 
     width: 180px;
-    height: 50px; 
+    height: 50px;
     bottom: 25%;
     left: 32%;
-
+    border-style: none;
     position: absolute;
-    display:flex;    
+    display: flex;
     justify-content: center;
     align-items: end;
 
@@ -174,7 +245,7 @@ body {
     position: relative;
     bottom: 0%;
     left: 0%;
-    z-index:1; 
+    z-index: 1;
 }
 
 [data-age="adult"] {
@@ -190,46 +261,58 @@ body {
     z-index: 3;
 }
 
-#tr {       
-    background-color: rgb(255, 220, 239);
-
+#tr {
+    border-style: none;
+    display: flex;
+    z-index: 1;
+    align-items: flex-end;
     --bottom: 40%;
     --left: 3%;
 }
 
 #nov {
-    background-color: #dddcff;
-
-    --bottom:45%;
+    border-style: none;
+    z-index: 1;
+    display: flex;
+    align-items: flex-end;
+    --bottom: 45%;
     --left: 10%;
 }
 
 #gol {
-    background-color: #b4ffa8;
-
+    border-style: none;
+    z-index: 1;
+    display: flex;
+    align-items: flex-end;
     --bottom: 50%;
-    --left: 17%;    
+    --left: 17%;
 }
 
 #als {
-    background-color:rgb(255, 220, 239);
-    
+    border-style: none;
+    z-index: 2;
+    display: flex;
+    align-items: flex-end;
     --bottom: 27%;
-    --left: 6%; 
+    --left: 6%;
 }
 
 #ar {
-    background-color: #dddcff;
-    
+    border-style: none;
+    z-index: 2;
+    display: flex;
+    align-items: flex-end;
     --bottom: 32%;
-    --left: 13%; 
+    --left: 13%;
 }
 
-#liz { 
-    background-color: #b4ffa8;    
-    
+#liz {
+    border-style: none;
+    z-index: 2;
+    display: flex;
+    align-items: flex-end;
     --bottom: 37%;
-    --left: 20%;      
+    --left: 20%;
 }
 
 .jump {
@@ -237,26 +320,28 @@ body {
 }
 
 @keyframes jump {
-    0%, 
+
+    0%,
     100% {
         transform: translateY(-20px);
-    }    
+    }
+
     50% {
         transform: translateY(-35px);
-    }     
+    }
 }
 
 .move {
     animation: move 1s ease-in-out;
-    animation-fill-mode: both; 
+    animation-fill-mode: both;
 }
 
-@keyframes moveRight { 
+@keyframes moveRight {
     100% {
         bottom: var(--bottom);
         left: calc(95% - var(--left));
-    }    
-        
+    }
+
 }
 
 #restart {
@@ -271,21 +356,32 @@ body {
 #finalScreen {
     width: 1200px;
     height: 800px;
-    position: relative; 
-    margin: auto;       
+    position: relative;
+    margin: auto;
     border: 1px solid black;
 }
 
 .win {
-    background-color: hsl(62, 100%, 88%); 
+    background-color: hsl(62, 100%, 88%);
 }
 
 .loss {
-    background-color: hsl(0, 100%, 76%);  
+    background-color: hsl(0, 100%, 76%);
 
     background-image: url("../img/end.jpeg");
-    background-repeat: no-repeat;    
-    background-size: 100% 100%;    
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+#menuThemeButton {
+    background-color: white;
+    border-style: double;
+    border-radius: 9px;
+    transition: 0.4s border-color;
+}
+
+#menuThemeButton:hover {
+    border-color: rgb(94, 232, 94);
 }
 
 .scoreBoard {
@@ -297,13 +393,13 @@ body {
     position: absolute;
     left: 0%;
     top: 20%;
-    height:55%;
+    height: 55%;
 
     width: 50%;
 
     z-index: 2;
 
-    
+
 
     overflow-y: auto;
 
@@ -325,13 +421,13 @@ body {
     position: absolute;
     left: 50%;
     top: 20%;
-    height:55%;
+    height: 55%;
 
     width: 50%;
 
     z-index: 2;
 
-    
+
 
     overflow-y: auto;
 
