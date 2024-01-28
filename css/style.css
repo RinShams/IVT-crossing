@@ -350,6 +350,10 @@ body {
     position: absolute;
     bottom: 15%;
     left: 45%;
+    background-color: white;
+    border-style: double;
+    border-radius: 9px;
+    transition: 0.4s border-color;
 }
 
 
@@ -362,7 +366,9 @@ body {
 }
 
 .win {
-    background-color: hsl(62, 100%, 88%);
+    background-image: url("../img/win.jpg");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
 }
 
 .loss {

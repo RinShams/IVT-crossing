@@ -59,7 +59,7 @@ class FinalScreenComponent extends Component {
 
             let span = document.createElement('span');
             document.querySelector(".lastscore").appendChild(span);
-            span.textContent = `🌧 О нет, кто-то из студентов испугалсяё... Проигрыш! 🌧`;
+            span.textContent = `🌧 О нет, кто-то из студентов испугался... Проигрыш! 🌧`;
         }
 
         let flag = localStorage.getItem("volume");
